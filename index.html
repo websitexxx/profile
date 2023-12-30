@@ -2787,181 +2787,133 @@ i.fas.fa-check {
   transform: translateX(24px);
 }
 
-.fa-moon {
-  color: pink;
-}
-
-.fa-sun {
-  color: yellow;
-}
-
 /* -----------------------------------------------------------------
-    - Snow
+    - Pháo hoa
 ----------------------------------------------------------------- */
-@-webkit-keyframes snowflakes-fall {
-  0% {
-      top: -10%;
-  }
-  100% {
-      top: 100%;
-  }
+
+
+@keyframes firework {
+  0% { transform: translate(var(--x), var(--initialY)); width: var(--initialSize); opacity: 1; }
+  50% { width: 1.5vmin; opacity: 1; }
+  100% { width: var(--finalSize); opacity: 0; }
 }
 
-@-webkit-keyframes snowflakes-shake {
-  0%,
-  100% {
-      -webkit-transform: translateX(0);
-      transform: translateX(0);
-  }
-  50% {
-      -webkit-transform: translateX(80px);
-      transform: translateX(80px);
-  }
-}
-
-@keyframes snowflakes-fall {
-  0% {
-      top: -10%;
-  }
-  100% {
-      top: 100%;
-  }
-}
-
-@keyframes snowflakes-shake {
-  0%,
-  100% {
-      transform: translateX(0);
-  }
-  50% {
-      transform: translateX(80px);
-  }
-}
-
-.snowflake {
-  color: #fff;
-  font-size: 1em;
-  font-family: Arial, sans-serif;
-  text-shadow: 0 0 5px #000;
-  position: fixed;
-  top: -10%;
-  z-index: 9999;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: default;
-  -webkit-animation-name: snowflakes-fall, snowflakes-shake;
-  -webkit-animation-duration: 10s, 3s;
-  -webkit-animation-timing-function: linear, ease-in-out;
-  -webkit-animation-iteration-count: infinite, infinite;
-  -webkit-animation-play-state: running, running;
-  animation-name: snowflakes-fall, snowflakes-shake;
-  animation-duration: 10s, 3s;
-  animation-timing-function: linear, ease-in-out;
-  animation-iteration-count: infinite, infinite;
-  animation-play-state: running, running;
-}
-
-.snowflake:nth-of-type(0) {
-  left: 1%;
-  -webkit-animation-delay: 0s, 0s;
-  animation-delay: 0s, 0s;
-}
-
-.snowflake:nth-of-type(1) {
-  left: 10%;
-  -webkit-animation-delay: 1s, 1s;
-  animation-delay: 1s, 1s;
-}
-
-.snowflake:nth-of-type(2) {
-  left: 20%;
-  -webkit-animation-delay: 6s, 0.5s;
-  animation-delay: 6s, 0.5s;
-}
-
-.snowflake:nth-of-type(3) {
-  left: 30%;
-  -webkit-animation-delay: 4s, 2s;
-  animation-delay: 4s, 2s;
-}
-
-.snowflake:nth-of-type(4) {
-  left: 40%;
-  -webkit-animation-delay: 2s, 2s;
-  animation-delay: 2s, 2s;
-}
-
-.snowflake:nth-of-type(5) {
-  left: 50%;
-  -webkit-animation-delay: 8s, 3s;
-  animation-delay: 8s, 3s;
-}
-
-.snowflake:nth-of-type(6) {
-  left: 60%;
-  -webkit-animation-delay: 6s, 2s;
-  animation-delay: 6s, 2s;
-}
-
-.snowflake:nth-of-type(7) {
-  left: 70%;
-  -webkit-animation-delay: 2.5s, 1s;
-  animation-delay: 2.5s, 1s;
-}
-
-.snowflake:nth-of-type(8) {
-  left: 80%;
-  -webkit-animation-delay: 1s, 0s;
-  animation-delay: 1s, 0s;
-}
-
-.snowflake:nth-of-type(9) {
-  left: 90%;
-  -webkit-animation-delay: 3s, 1.5s;
-  animation-delay: 3s, 1.5s;
-}
-
-.snowflake:nth-of-type(10) {
-  left: 25%;
-  -webkit-animation-delay: 2s, 0s;
-  animation-delay: 2s, 0s;
-}
-
-.snowflake:nth-of-type(11) {
-  left: 65%;
-  -webkit-animation-delay: 4s, 2.5s;
-  animation-delay: 4s, 2.5s;
-}
-.snowflake img {
-  height: 17px;
-}
-.snowflakes {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.snowflake {
+.firework,
+.firework::before,
+.firework::after {
+  --initialSize: 1vmin;
+  --finalSize: 60vmin; /* Thay đổi giá trị này để làm to hơn */
+  --particleSize: 0.2vmin;
+  --color1: yellow;
+  --color2: khaki;
+  --color3: white;
+  --color4: lime;
+  --color5: gold;
+  --color6: mediumseagreen;
+  --y: -30vmin;
+  --x: -50%;
+  --initialY: 60vmin;
+  content: "";
+  animation: firework 2s infinite;
   position: absolute;
-  width: 20px; /* Độ rộng của hình ảnh tuyết */
-  height: 20px; /* Chiều cao của hình ảnh tuyết */
-  background-image: url('/assets/img/OIP-removebg-preview.png'); /* Đường dẫn đến hình ảnh tuyết */
-  background-size: cover; /* Chắc chắn hình ảnh tuyết đủ lớn để che phủ .snowflake */
-  animation: fall linear infinite;
-  animation-duration: 10s;
-  animation-delay: calc(-10s * var(--i));
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, var(--y));
+  width: var(--initialSize);
+  aspect-ratio: 1;
+  background: 
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 50% 0%,
+    radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 50%,
+    radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 50% 100%,
+    radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 0% 50%,
+    
+    radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 80% 90%,
+    radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 95% 90%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 90% 70%,
+    radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 60%,
+    radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 55% 80%,
+    radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 70% 77%,
+    
+    radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 22% 90%,
+    radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 45% 90%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 70%,
+    radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 10% 60%,
+    radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 31% 80%,
+    radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 28% 77%,
+    radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 13% 72%,
+    
+    radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 80% 10%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 95% 14%,
+    radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 90% 23%,
+    radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 100% 43%,
+    radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 85% 27%,
+    radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 77% 37%,
+    radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 60% 7%,
+    
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 22% 14%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 45% 20%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 34%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 10% 29%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 31% 37%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 28% 7%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 13% 42%
+    ;
+  background-size: var(--initialSize) var(--initialSize);
+  background-repeat: no-repeat;
+}
+.firework::before {
+  --x: -50%;
+  --y: -50%;
+  --initialY: -50%;
+  transform: translate(-50%, -50%) rotate(40deg) scale(1.3) rotateY(40deg);
 }
 
-@keyframes fall {
-  to {
-      transform: translateY(100vh);
-  }
+.firework::after {
+  --x: -50%;
+  --y: -50%;
+  --initialY: -50%;
+  transform: translate(-50%, -50%) rotate(170deg) scale(1.15) rotateY(-30deg);
 }
+
+.firework:nth-child(2) {
+  --x: 30vmin;
+}
+
+.firework:nth-child(2),
+.firework:nth-child(2)::before,
+.firework:nth-child(2)::after {
+  --color1: pink;
+  --color2: violet;
+  --color3: fuchsia;
+  --color4: orchid;
+  --color5: plum;
+  --color6: lavender;  
+  --finalSize: 50vmin; /* Thay đổi giá trị này để làm to hơn */
+  left: 30%;
+  top: 60%;
+  animation-delay: -0.25s;
+}
+
+.firework:nth-child(3) {
+  --x: -30vmin;
+  --y: -50vmin;
+}
+
+.firework:nth-child(3),
+.firework:nth-child(3)::before,
+.firework:nth-child(3)::after {
+  --color1: cyan;
+  --color2: lightcyan;
+  --color3: lightblue;
+  --color4: PaleTurquoise;
+  --color5: SkyBlue;
+  --color6: lavender;
+  --finalSize: 45vmin; /* Thay đổi giá trị này để làm to hơn */
+  left: 70%;
+  top: 60%;
+  animation-delay: -0.4s;
+}
+
 
 .footer {
   text-align: center;
@@ -3063,7 +3015,7 @@ i.fas.fa-check {
 }
 
 .text {
-  color: rgb(184, 236, 104);
+  color: #5E6E80;
   font-weight: 800;
   letter-spacing: 1.1px;
   z-index: 2;
@@ -3074,7 +3026,7 @@ i.fas.fa-check {
 }
 
 .svgIcon path {
-  fill: rgb(184, 236, 104);
+  fill: #5E6E80;
 }
 
 .Btn:hover {
@@ -3085,7 +3037,7 @@ i.fas.fa-check {
   position: absolute;
   width: 10px;
   height: 10px;
-  background-color: rgb(184, 236, 104);
+  background-color: #ff03c8;
   border-radius: 50%;
   z-index: 1;
   opacity: 0;
@@ -3100,9 +3052,9 @@ i.fas.fa-check {
 }
 
 .Btn:hover {
-  box-shadow: 0px 0px 5px rgb(184, 236, 104),
-  0px 0px 10px rgb(184, 236, 104),
-  0px 0px 30px rgb(184, 236, 104);
+  box-shadow: 0px 0px 5px #ff03c8,
+  0px 0px 10px #ff03c8,
+  0px 0px 30px #ff03c8;
   transition-duration: .7s;
 }
 
@@ -3113,25 +3065,27 @@ i.fas.fa-check {
 .Btn:hover .svgIcon path {
   fill: rgb(65, 64, 64);
 }
+
 </style>
     </head>
     <body>
-        <div class="snowflakes" aria-hidden="true">
-            <div class="snowflake"></div>
-            <div class="snowflake"></div>
-            <div class="snowflake"></div>
-            <div class="snowflake"></div>
-            <div class="snowflake"></div>
-            <div class="snowflake"></div>
-            <div class="snowflake"></div>
-            <div class="snowflake"></div>
-            <div class="snowflake"></div>
-            <div class="snowflake"></div>
-            <div class="snowflake"></div>
-            <div class="snowflake"></div>
-            <div class="snowflake"></div>
-            <div class="snowflake"></div>
-        </div>    
+      <div class="fireworks" aria-hidden="true">
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+        <div class="firework"></div>
+      </div>
+      
         <!-- Preloader -->
         <div class="preloader">
             <div class="preloader__wrap">
@@ -3142,9 +3096,6 @@ i.fas.fa-check {
                 <div class="preloader__progress"><span></span></div>
             </div>
         </div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
-        <div class="snowflake"></div>
         <main class="main">
             <!-- Header Image -->
             <div class="header-image">
@@ -3175,14 +3126,16 @@ i.fas.fa-check {
                     </div>
                     <div class="header__right">
                         <ul class="header__contact">
-                            <li><span class="overhead" style="color:palegoldenrod;">Location</span>Phu Tho, VietNam</li>
-                            <li><span class="overhead" style="color:palegoldenrod;">Birthday</span>03/08/2006</li>
-                            <li><span class="overhead" style="color:palegoldenrod;">Relationship</span>Single</li>
+                            <li><span class="overhead" style="color:#ff03c8;">Location</span>Phu Tho, VietNam</li>
+                            <li><span class="overhead" style="color:#ff03c8;">Birthday</span>03/08/2006</li>
+                            <li><span class="overhead" style="color:#ff03c8;">Relationship</span>Single</li>
                         </ul>
                     </div>
                 </header>
 
-                <center>
+               
+                <div class="row sticky-parent">
+<center>
                     <label class="theme-switch">
                         <input type="checkbox" class="theme-switch__checkbox" id="checkbox" value="yes">
                         <div class="theme-switch__container">
@@ -3204,8 +3157,6 @@ i.fas.fa-check {
                         </div>
                       </label>
                 </center>   
-                <div class="row sticky-parent">
-
                                     <!-- Case Item -->
                                     <div class="col-12 col-lg-6">
                                         <div class="case-item">
@@ -3245,6 +3196,16 @@ i.fas.fa-check {
                                     </div>
                                </div>
                              </div>
+
+
+
+
+
+
+
+
+                             
+                              
                         <!-- Footer -->
                           <footer class="footer">
                             © 2023 Vận Hành Bởi Khắc Việt 
