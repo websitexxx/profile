@@ -84,7 +84,7 @@
   --container-height: 2.5em;
   --container-radius: 6.25em;
   /* radius 0 - minecraft mode :) */
-  --container-light-bg: #3D7EAE;
+  --container-light-bg: #ff00cc;
   --container-night-bg: #1D1F2C;
   --circle-container-diameter: 3.375em;
   --sun-moon-diameter: 2.125em;
@@ -1113,7 +1113,7 @@ button:focus {
   text-decoration: none;
 }
 .header__social a:hover {
-  color: #304CFD;
+  color: #ff00ee;
 }
 @media only screen and (max-width: 991px) {
   .header__social {
@@ -2915,6 +2915,10 @@ i.fas.fa-check {
 }
 
 
+:root {
+  --gradient-colors: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red, violet, indigo, blue, green);
+}
+
 .footer {
   text-align: center;
   position: fixed;
@@ -2924,8 +2928,9 @@ i.fas.fa-check {
   color: white;
   padding: 1px;
   animation: nhapnhay 1s linear infinite;
+  background: var(--gradient-colors);
+  background-size: 200% 100%;
 }
-
 
 @keyframes nhapnhay {
   0% { background-position: 0% 0%; }
@@ -3057,11 +3062,11 @@ i.fas.fa-check {
 }
 
 .Btn:hover .text {
-  color: rgb(65, 64, 64);
+  color: rgb(255, 0, 234);
 }
 
 .Btn:hover .svgIcon path {
-  fill: rgb(65, 64, 64);
+  fill: rgb(255, 0, 195);
 }
 
 </style>
@@ -3195,7 +3200,14 @@ i.fas.fa-check {
                         </div>
                       </label>
                 </center> 
-                <h1>...</h1>
+                <div class="firework"></div>
+                <div class="firework"></div>
+                <div class="firework"></div>
+                <div class="firework"></div>
+                <div class="firework"></div>
+                <div class="firework"></div>
+                <div class="firework"></div>
+                <div class="firework"></div>
                 <!-- Footer -->
                           <footer class="footer">
                             © 2023 Vận Hành Bởi Khắc Việt 
